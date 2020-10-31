@@ -1,0 +1,37 @@
+﻿<l:Number x:Class="EquationDraw.GroupOperation"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:l="clr-namespace:EquationDraw"
+             xmlns:math="http://hexinnovation.com/math"
+             x:Name="control"
+             mc:Ignorable="d">
+    <FrameworkElement.Resources>
+        <math:MathConverter x:Key="math"/>
+    </FrameworkElement.Resources>
+    <Grid>
+        <l:MyItemsControl ItemsSource="{Binding Operators, ElementName=control}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Visibility="{Binding IsFirst, Converter={l:VisibilityConverter}, ConverterParameter='invert, collapsed'}" Foreground="{Binding Foreground, ElementName=control}" VerticalAlignment="Center" Text="{Binding Separator, ElementName=control}">
+                            <TextBlock.FontSize>
+                                <MultiBinding Converter="{StaticResource math}" ConverterParameter="x/2.5">
+                                    <Binding ElementName="control" Path="ActualHeight"/>
+                                </MultiBinding>
+                            </TextBlock.FontSize>
+                        </TextBlock>
+                        <ContentPresenter Content="{Binding}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+        </l:MyItemsControl>
+
+    </Grid>
+</l:Number>
