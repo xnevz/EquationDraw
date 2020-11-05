@@ -76,9 +76,13 @@
     <Compile Include="Arithmetic\Expressions\FuncExpression.cs" />
     <Compile Include="Arithmetic\Expressions\NumExpression.cs" />
     <Compile Include="Arithmetic\Expressions\UnknownExpression.cs" />
+    <Compile Include="Controls\Number.cs" />
     <Compile Include="Controls\Operations\BaseBinaryOperation.cs" />
     <Compile Include="Controls\Operations\FunctionOperation.xaml.cs">
       <DependentUpon>FunctionOperation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Operations\RealNumber.xaml.cs">
+      <DependentUpon>RealNumber.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\Operations\VariableOperation.xaml.cs">
       <DependentUpon>VariableOperation.xaml</DependentUpon>
@@ -137,12 +141,8 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Controls\CustomControls\MyItemsControl.cs" />
-    <Compile Include="Controls\Number.cs" />
     <Compile Include="Controls\Operations\BinaryOperation.xaml.cs">
       <DependentUpon>BinaryOperation.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Operations\RealNumber.xaml.cs">
-      <DependentUpon>RealNumber.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
