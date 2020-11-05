@@ -1,0 +1,35 @@
+﻿<local:UnaryOperation x:Class="EquationDraw.FunctionOperation"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:EquationDraw"
+             x:Name="control"
+             mc:Ignorable="d" >
+    <Grid>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <StackPanel.Resources>
+                <Style TargetType="Path">
+                    <Setter Property="StrokeEndLineCap" Value="Round"/>
+                    <Setter Property="StrokeStartLineCap" Value="Round"/>
+                </Style>
+            </StackPanel.Resources>
+            <TextBlock Margin="0 0 5 0" Visibility="{Binding FuncName, ElementName=control, Converter={local:VisibilityConverter 'IsText,Invert,Collapse'}}" VerticalAlignment="Center" Text="{Binding FuncName, ElementName=control}"/>
+            
+            <Path VerticalAlignment="Center" Data="M1,0 C0,0 0,1 1,1" Name="lParen" Stretch="Fill" Stroke="White" 
+                  Width="{Binding ActualHeight, Converter={StaticResource math}, ConverterParameter=x/8, RelativeSource={RelativeSource Self}}"
+                  StrokeThickness="{Binding ActualHeight, Converter={StaticResource math}, ConverterParameter=log(max(x;1);10), RelativeSource={RelativeSource Self}}"
+                  Height="{Binding ActualHeight, ElementName=inner}"
+                  />
+
+            <Grid VerticalAlignment="Center" HorizontalAlignment="Center" Margin="{Binding ActualHeight, Converter={StaticResource math}, ConverterParameter=log(x; 10), ElementName=inner}">
+                <ContentPresenter Name="inner" Content="{Binding Child, ElementName=control}"/>
+            </Grid>
+            
+            <Path Data="M0,0 C1,0 1,1 0,1" VerticalAlignment="Center" Stretch="Fill" Stroke="White"
+                  Width="{Binding ActualWidth, ElementName=lParen}"
+                  Height="{Binding ActualHeight, ElementName=lParen}"
+                  StrokeThickness="{Binding StrokeThickness, ElementName=lParen}" />
+        </StackPanel>
+    </Grid>
+</local:UnaryOperation>

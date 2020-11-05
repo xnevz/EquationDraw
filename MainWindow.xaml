@@ -3,10 +3,15 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:EquationDraw"
+        xmlns:l="clr-namespace:EquationDraw"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        FontFamily="Roboto"
+        Foreground="White"
+        Background="{StaticResource DarkColorBrush}"
+        Title="EquationDraw" Height="450" Width="800">
     <Grid>
-        
+        <Grid HorizontalAlignment="Center" Name="container" VerticalAlignment="Center">
+        </Grid>
+        <TextBox VerticalAlignment="Bottom" Margin="10" Padding="5" Name="tBox" TextChanged="tBox_TextChanged"/>
     </Grid>
 </Window>
