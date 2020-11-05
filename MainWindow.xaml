@@ -3,31 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:l="clr-namespace:EquationDraw"
+        xmlns:local="clr-namespace:EquationDraw"
         mc:Ignorable="d"
-        Topmost="True"
-        Foreground="White"
-        Background="{StaticResource DarkColorBrush}"
-        Title="EquationDraw" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Grid HorizontalAlignment="Center" Name="container" VerticalAlignment="Center">
-            <l:GroupOperation x:Name="f" Separator="+">
-                <l:RealNumber Value="4"/>
-                <l:RealNumber Value="4"/>
-                <l:SquareRootOperation>
-                    <l:SquareRootOperation.Child>
-                        <l:DivisionOperation>
-                            <l:DivisionOperation.Top>
-                                <l:RealNumber Value="45"/>
-                            </l:DivisionOperation.Top>
-                            <l:DivisionOperation.Bottom>
-                                <l:RealNumber Value="112545" />
-                            </l:DivisionOperation.Bottom>
-                        </l:DivisionOperation>
-                    </l:SquareRootOperation.Child>
-                </l:SquareRootOperation>
-            </l:GroupOperation>
-        </Grid>
-        <TextBox VerticalAlignment="Bottom" Text="1+5/3" Margin="10" Padding="5" Name="tBox" TextChanged="tBox_TextChanged"/>
+        
     </Grid>
 </Window>

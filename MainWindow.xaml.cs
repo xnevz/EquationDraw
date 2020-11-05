@@ -23,18 +23,6 @@ namespace EquationDraw
         public MainWindow()
         {
             InitializeComponent();
-
         }
-
-        private void tBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            //var tree = TreeGenerator.GenerateTree(tBox.Text.Trim());
-            //if (!(tree is null))
-            //{
-            //    container.Children.Clear();
-            //    container.Children.Add(tree.GetUI());
-            //}
-        }
-        
     }
 }
