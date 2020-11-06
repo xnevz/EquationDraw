@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:l="clr-namespace:EquationDraw" x:Name="control"
-             mc:Ignorable="d">
+             mc:Ignorable="d" Loaded="control_Loaded">
     <FrameworkElement.Resources>
         <Line x:Key="divLine" X1="0" X2="1" Y1="0" Y2="0" Stretch="Fill" StrokeThickness="2" Stroke="{StaticResource LightColorBrush}"
                   StrokeStartLineCap="Round" StrokeEndLineCap="Round" Height="2"
@@ -19,11 +19,25 @@
     </FrameworkElement.Resources>
     <StackPanel>
 
-        <ContentPresenter Name="top" HorizontalAlignment="Center" Content="{Binding Left, ElementName=control}" Margin="10"/>
+        <Grid Name="cc">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
 
-        <ContentPresenter HorizontalAlignment="Center" Content="{Binding Separator, ElementName=control, TargetNullValue={StaticResource divLine}}"/>
+            <Grid Name="top" Grid.Row="0" HorizontalAlignment="Center">
+                <ContentPresenter VerticalAlignment="Bottom"
+                              Content="{Binding Left, ElementName=control}" Margin="10"/>
+            </Grid>
+            <ContentPresenter Grid.Row="1"
+                              Content="{Binding Separator, ElementName=control, TargetNullValue={StaticResource divLine}}"/>
 
-        <ContentPresenter Name="bottom" HorizontalAlignment="Center" Content="{Binding Right, ElementName=control}" Margin="10"/>
+            <Grid Name="bottom" Grid.Row="2" HorizontalAlignment="Center">
+                <ContentPresenter Grid.Row="2" VerticalAlignment="Top"
+                              Content="{Binding Right, ElementName=control}" Margin="10"></ContentPresenter>
+            </Grid>
+        </Grid>
 
     </StackPanel>
 </l:BaseBinaryOperation>

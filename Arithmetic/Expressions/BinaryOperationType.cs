@@ -5,8 +5,10 @@
     /// </summary>
     public enum BinaryOperationType
     {
-        Add, Sub,
-        Div, FloorDiv, Mult,
+        Add,
+        Sub,
+        Div, 
+        Mult,
         Pow
     }
 }

@@ -6,7 +6,7 @@ root
 
 expression
 	: left=expression op=POW right=expression
-	| left=expression op=(MULT | DIV | FLOOR_DIV) right=expression
+	| left=expression op=(MULT | DIV) right=expression
 	| left=expression op=(PLUS | MINUS) right=expression
 	| funcName=variable? LPAREN fParam1=expression fOtherParams=multExpression RPAREN
 	| sign=sgn number=atom
@@ -97,10 +97,6 @@ MULT
 
 DIV
    : '/'
-   ;
-
-FLOOR_DIV
-   : '\\'
    ;
 POINT
    : '.'

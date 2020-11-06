@@ -44,11 +44,10 @@ namespace EquationDraw
             switch (type)
             {
                 case BinaryOperationType.Div:
-                    op = new DivisionOperation();
+                    op = new DivisionOperation(left, right);
                     break;
                 case BinaryOperationType.Pow:
                 case BinaryOperationType.Mult:
-                case BinaryOperationType.FloorDiv:
                 case BinaryOperationType.Add:
                 case BinaryOperationType.Sub:
                     op = new BinaryOperation
@@ -56,13 +55,15 @@ namespace EquationDraw
                         /* get separator from type */
                         Separator = type.GetOperatorSymbol()
                     };
+
+                    op.Left = left;
+                    op.Right = right;
+
                     break;
                 default:
                     return null;
             }
 
-            op.Left = left;
-            op.Right = right;
 
             return op;
         }

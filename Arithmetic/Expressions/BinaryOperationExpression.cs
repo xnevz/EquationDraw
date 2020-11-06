@@ -32,6 +32,17 @@ namespace EquationDraw
         {
             Left = left;
             Right = right;
+
+            // optimise parenthesis for Division
+            if (type == BinaryOperationType.Div)
+            {
+                if (right is FuncExpression rFunc && rFunc.IsOrdinaryParenthesis())
+                    Right = rFunc.Params[0];
+
+                if (left is FuncExpression lFunc && lFunc.IsOrdinaryParenthesis())
+                    Left = lFunc.Params[0];
+            }
+
             Type = type;
 
             // setting the parent of the left & right expressions

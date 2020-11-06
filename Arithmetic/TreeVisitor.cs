@@ -25,7 +25,7 @@ namespace EquationDraw
         private Expression HandleOptimisation(Expression exp)
             => OptimiseExpressionWhenVisiting ? exp.Optimise() : exp;
 
-        public override Expression VisitExpression([NotNull] ExpressionContext context, Expression parent = null)
+        public Expression VisitExpression([NotNull] ExpressionContext context, Expression parent = null)
         {
             Expression res;
 
@@ -52,7 +52,7 @@ namespace EquationDraw
                 var fParams = new List<Expression>();
 
                 // add the first param of the function
-                fParams.Add(Visit(context.fParam1));
+                fParams.Add(VisitExpression(context.fParam1));
 
                 // other params of the functions (set parent to null, ctor of the FuncExpression will handle it)
                 var otherParams = (context.fOtherParams?.children as List<IParseTree>)?
@@ -70,8 +70,8 @@ namespace EquationDraw
             if (context.op != null)
             {
                 // get left, right sides
-                var left = Visit(context.left);
-                var right = Visit(context.right);
+                var left = VisitExpression(context.left);
+                var right = VisitExpression(context.right);
 
                 // get operator
                 var op = context.op.Text;
@@ -87,17 +87,18 @@ namespace EquationDraw
             return HandleOptimisation(res?.SetParent(parent));
         }
 
-        private static int SignRecogniser(string sign)
-            => sign.Count(c => c == BinaryOperationType.Sub.GetStringOperatorSymbol().First()) % 2 == 0 ? 1 : -1;
-
-        public override Expression VisitAtom(AtomContext context, Expression parent = null)
+        public Expression VisitAtom(AtomContext context, Expression parent = null)
             // return a NumExpression with the text parsed to a double
             => HandleOptimisation(new NumExpression(double.Parse(context.GetText())).SetParent(parent));
 
-        public override Expression VisitMultExprPart([NotNull] MultExprPartContext context, Expression parent = null)
-            => HandleOptimisation(Visit(context.expr).SetParent(parent));
+        public Expression VisitMultExprPart([NotNull] MultExprPartContext context, Expression parent = null)
+            => HandleOptimisation(VisitExpression(context.expr).SetParent(parent));
 
-        public override Expression VisitRoot([NotNull] RootContext context, Expression parent = null)
-            => HandleOptimisation(Visit(context.expression()).SetParent(parent));
+        public Expression VisitRoot([NotNull] RootContext context, Expression parent = null)
+            => HandleOptimisation(VisitExpression(context.expression()).SetParent(parent));
+
+        private static int SignRecogniser(string sign)
+            => sign.Count(c => c == BinaryOperationType.Sub.GetStringOperatorSymbol().First()) % 2 == 0 ? 1 : -1;
+
     }
 }

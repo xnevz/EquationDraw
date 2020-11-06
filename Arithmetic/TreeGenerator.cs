@@ -19,7 +19,7 @@ namespace EquationDraw
 
             visitor.OptimiseExpressionWhenVisiting = isOptimise;
 
-            var result = visitor.Visit(parser.root());
+            var result = visitor.VisitRoot(parser.root());
 
             return parser.MatchedEndOfFile && parser.NumberOfSyntaxErrors == 0 ? result : null;
         }

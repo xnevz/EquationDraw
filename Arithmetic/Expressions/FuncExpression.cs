@@ -68,9 +68,8 @@ namespace EquationDraw
                 // the content itself
                 else if (content is BinaryOperationExpression childBinaryExp &&
                     Parent is BinaryOperationExpression parentBinaryExp &&
-                    childBinaryExp.Type >= parentBinaryExp.Type)
+                    childBinaryExp.Type.CanRemoveParenthesisdWhenPreceededWith(parentBinaryExp.Type))
                     return content;
-
             }
 
             // optimise all params
