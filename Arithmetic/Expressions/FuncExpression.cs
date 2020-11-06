@@ -30,23 +30,19 @@ namespace EquationDraw
 
         public override Number GetUI()
         {
-            if (Name is null || Name == "")
-            {
-                var op = new FunctionOperation
-                {
-                    FuncName = "",
-                    Child = Params[0].GetUI()
-                };
-
-                return op;
-            }
-            else if (Name == "sqrt")
+            if (Name == "sqrt")
                 return new SquareRootOperation
                 {
                     Child = Params[0].GetUI()
                 };
 
-            return null;
+            var op = new FunctionOperation
+            {
+                FuncName = Name ?? "",
+                Child = Params[0].GetUI()
+            };
+
+            return op;
         }
 
         public override Expression Optimise()

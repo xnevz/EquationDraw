@@ -18,7 +18,7 @@
             
             <Path VerticalAlignment="Center" Data="M1,0 C0,0 0,1 1,1" Name="lParen" Stretch="Fill" Stroke="White" 
                   Width="{Binding ActualHeight, Converter={StaticResource math}, ConverterParameter=x/8, RelativeSource={RelativeSource Self}}"
-                  StrokeThickness="{Binding ActualHeight, Converter={StaticResource math}, ConverterParameter=log(max(x;1);10), RelativeSource={RelativeSource Self}}"
+                  StrokeThickness="{Binding ActualHeight, Converter={StaticResource math}, ConverterParameter=log(max(x;80);10), RelativeSource={RelativeSource Self}}"
                   Height="{Binding ActualHeight, ElementName=inner}"
                   />
 

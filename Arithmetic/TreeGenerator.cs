@@ -19,9 +19,12 @@ namespace EquationDraw
 
             visitor.OptimiseExpressionWhenVisiting = isOptimise;
 
-            var result = visitor.VisitRoot(parser.root());
+            // if not EOF or there exists errors than return null, don't visit (exceptions would be thrown)
+            if (!parser.MatchedEndOfFile || parser.NumberOfSyntaxErrors > 0)
+                return null;
 
-            return parser.MatchedEndOfFile && parser.NumberOfSyntaxErrors == 0 ? result : null;
+
+            return visitor.VisitRoot(parser.root());
         }
     }
 }
