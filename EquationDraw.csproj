@@ -50,7 +50,11 @@
     <Reference Include="MathConverter, Version=1.2.1.6, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\MathConverter.1.2.1.6\lib\net40-client\MathConverter.dll</HintPath>
     </Reference>
+    <Reference Include="Ninject, Version=4.0.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>packages\Ninject.4.0.0-beta-0134\lib\net45\Ninject.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -70,72 +74,82 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Arithmetic\Adapters\IUIProvider.cs" />
     <Compile Include="Arithmetic\Expressions\BinaryOperationExpression.cs" />
     <Compile Include="Arithmetic\Expressions\BinaryOperationType.cs" />
     <Compile Include="Arithmetic\Expressions\Expression.cs" />
     <Compile Include="Arithmetic\Expressions\FuncExpression.cs" />
     <Compile Include="Arithmetic\Expressions\NumExpression.cs" />
     <Compile Include="Arithmetic\Expressions\UnknownExpression.cs" />
-    <Compile Include="Controls\CustomControls\MyItemsControl.cs" />
-    <Compile Include="Controls\Number.cs" />
-    <Compile Include="Controls\Operations\BaseBinaryOperation.cs" />
-    <Compile Include="Controls\Operations\FunctionOperation.xaml.cs">
+    <Compile Include="UI\Adapters\UIProvider.cs" />
+    <Compile Include="UI\Controls\CustomControls\MyItemsControl.cs" />
+    <Compile Include="UI\Controls\Number.cs" />
+    <Compile Include="UI\Controls\Operations\BaseBinaryOperation.cs" />
+    <Compile Include="UI\Controls\Operations\FunctionOperation.xaml.cs">
       <DependentUpon>FunctionOperation.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Operations\RealNumber.xaml.cs">
+    <Compile Include="UI\Controls\Operations\PowerOperation.xaml.cs">
+      <DependentUpon>PowerOperation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\Operations\RealNumber.xaml.cs">
       <DependentUpon>RealNumber.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Operations\VariableOperation.xaml.cs">
+    <Compile Include="UI\Controls\Operations\VariableOperation.xaml.cs">
       <DependentUpon>VariableOperation.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\OperatorControl.xaml.cs">
+    <Compile Include="UI\Controls\OperatorControl.xaml.cs">
       <DependentUpon>OperatorControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DI\DIModule.cs" />
     <Compile Include="Helpers\Extensions.cs" />
-    <Compile Include="Arithmetic\TreeGenerator.cs" />
-    <Compile Include="Arithmetic\TreeVisitor.cs" />
-    <Compile Include="Controls\Operations\DivisionOperation.xaml.cs">
+    <Compile Include="Arithmetic\Grammar\TreeGenerator.cs" />
+    <Compile Include="Arithmetic\Grammar\TreeVisitor.cs" />
+    <Compile Include="UI\Controls\Operations\DivisionOperation.xaml.cs">
       <DependentUpon>DivisionOperation.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Operations\Operations.cs" />
-    <Compile Include="Controls\Operations\SquareRootOperation.xaml.cs">
+    <Compile Include="UI\Controls\Operations\Operations.cs" />
+    <Compile Include="UI\Controls\Operations\SquareRootOperation.xaml.cs">
       <DependentUpon>SquareRootOperation.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Resources\ValueConverters\BaseMultiValueConverter.cs" />
-    <Compile Include="Resources\ValueConverters\BaseValueConverter.cs" />
-    <Compile Include="Resources\ValueConverters\MyMultiValueConverter.cs" />
-    <Compile Include="Resources\ValueConverters\SpecialConverters\ThicknessConverter.cs" />
-    <Compile Include="Resources\ValueConverters\StringToDoubleTypeConverter.cs" />
-    <Compile Include="Resources\ValueConverters\VisibilityConverter.cs" />
-    <Page Include="Controls\Operations\DivisionOperation.xaml">
+    <Compile Include="UI\Resources\ValueConverters\BaseMultiValueConverter.cs" />
+    <Compile Include="UI\Resources\ValueConverters\BaseValueConverter.cs" />
+    <Compile Include="UI\Resources\ValueConverters\MyMultiValueConverter.cs" />
+    <Compile Include="UI\Resources\ValueConverters\SpecialConverters\ThicknessConverter.cs" />
+    <Compile Include="UI\Resources\ValueConverters\StringToDoubleTypeConverter.cs" />
+    <Compile Include="UI\Resources\ValueConverters\VisibilityConverter.cs" />
+    <Page Include="UI\Controls\Operations\DivisionOperation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\Operations\BinaryOperation.xaml">
+    <Page Include="UI\Controls\Operations\BinaryOperation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\Operations\FunctionOperation.xaml">
+    <Page Include="UI\Controls\Operations\FunctionOperation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\Operations\RealNumber.xaml">
+    <Page Include="UI\Controls\Operations\PowerOperation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\Operations\SquareRootOperation.xaml">
+    <Page Include="UI\Controls\Operations\RealNumber.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\Operations\VariableOperation.xaml">
+    <Page Include="UI\Controls\Operations\SquareRootOperation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\OperatorControl.xaml">
+    <Page Include="UI\Controls\Operations\VariableOperation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainWindow.xaml">
+    <Page Include="UI\Controls\OperatorControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Windows\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -143,18 +157,19 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Controls\Operations\BinaryOperation.xaml.cs">
+    <Compile Include="UI\Controls\Operations\BinaryOperation.xaml.cs">
       <DependentUpon>BinaryOperation.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="UI\Windows\IStartupWindow.cs" />
+    <Compile Include="UI\Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Resources\Colors.xaml">
+    <Page Include="UI\Resources\Colors.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Resources\ControlStyles.xaml">
+    <Page Include="UI\Resources\ControlStyles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -194,9 +209,7 @@
   <ItemGroup>
     <None Include="Notes.md" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Arithmetic\Others\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

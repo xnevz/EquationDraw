@@ -8,14 +8,13 @@ namespace EquationDraw
 {
 
     /// <summary>
-    /// the base class of all rithmetic expressions
+    /// The base class of all rithmetic expressions
     /// </summary>
     public abstract class Expression
     {
         /// <summary>
-        /// Gets the Number object of the Expression
+        /// Gets the UI representation of this Expression
         /// </summary>
-        /// <returns></returns>
         public abstract Number GetUI();
 
         /// <summary>
@@ -29,7 +28,9 @@ namespace EquationDraw
         /// </summary>
         public Expression Parent { get; set; }
 
-        // sets the parent and returns the current Expression
+        /// <summary>
+        /// Sets the parent and returns the current Expression allowing for further modifications
+        /// </summary>
         public Expression SetParent(Expression parent)
         {
             this.Parent = parent;

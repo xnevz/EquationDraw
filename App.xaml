@@ -2,16 +2,15 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:EquationDraw"
-             xmlns:math="http://hexinnovation.com/math"
-             StartupUri="MainWindow.xaml">
+             xmlns:math="http://hexinnovation.com/math">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary>
                     <math:MathConverter x:Key="math"/>
                 </ResourceDictionary>
-                <ResourceDictionary Source="Resources/Colors.xaml"/>
-                <ResourceDictionary Source="Resources/ControlStyles.xaml"/>
+                <ResourceDictionary Source="./UI/Resources/Colors.xaml"/>
+                <ResourceDictionary Source="./UI/Resources/ControlStyles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

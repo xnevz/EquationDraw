@@ -16,25 +16,13 @@ using System.Windows.Shapes;
 namespace EquationDraw
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for PowerOperation.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class PowerOperation
     {
-        public MainWindow()
+        public PowerOperation()
         {
             InitializeComponent();
-
         }
-
-        private void tBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            var tree = TreeGenerator.GenerateTree(tBox.Text.Trim(), true);
-            if (!(tree is null))
-            {
-                container.Children.Clear();
-                container.Children.Add(tree.GetUI());
-            }
-        }
-        
     }
 }

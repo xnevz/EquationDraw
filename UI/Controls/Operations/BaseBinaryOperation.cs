@@ -33,39 +33,5 @@ namespace EquationDraw
             get { return GetValue(SeparatorProperty); }
             set { SetValue(SeparatorProperty, value); }
         }
-
-
-        public static BaseBinaryOperation ConstructBinaryOperation(BinaryOperationType type, Number left, Number right)
-        {
-            // init a new binaryOP
-            BaseBinaryOperation op = null;
-
-            // switch type
-            switch (type)
-            {
-                case BinaryOperationType.Div:
-                    op = new DivisionOperation(left, right);
-                    break;
-                case BinaryOperationType.Pow:
-                case BinaryOperationType.Mult:
-                case BinaryOperationType.Add:
-                case BinaryOperationType.Sub:
-                    op = new BinaryOperation
-                    {
-                        /* get separator from type */
-                        Separator = type.GetOperatorSymbol()
-                    };
-
-                    op.Left = left;
-                    op.Right = right;
-
-                    break;
-                default:
-                    return null;
-            }
-
-
-            return op;
-        }
     }
 }

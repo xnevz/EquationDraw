@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Ninject;
 
 namespace EquationDraw
 {
+    /// <summary>
+    /// Expression of a binary operation eg: + - * / power etc...
+    /// </summary>
     public class BinaryOperationExpression : Expression
     {
 
@@ -25,11 +23,22 @@ namespace EquationDraw
         /// </summary>
         public BinaryOperationType Type { get; set; }
 
+        private IUIProvider uiProvider;
+
+        private void Init()
+        {
+            // setting the UI provider
+            uiProvider = App.DIKernel.Get<IUIProvider>();
+        }
+
         /// <summary>
         /// default constructor
         /// </summary>
         public BinaryOperationExpression(Expression left, Expression right, BinaryOperationType type)
         {
+            // initialisation
+            Init();
+
             Left = left;
             Right = right;
 
@@ -50,7 +59,7 @@ namespace EquationDraw
         }
 
         public override Number GetUI()
-            => BaseBinaryOperation.ConstructBinaryOperation(Type, Left.GetUI(), Right.GetUI());
+            => uiProvider.ConstructBinaryOperation(Type, Left.GetUI(), Right.GetUI());
 
         public override Expression Optimise()
         {
